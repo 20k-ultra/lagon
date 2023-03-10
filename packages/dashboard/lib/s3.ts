@@ -4,15 +4,18 @@ declare const global: typeof globalThis & {
   s3: S3Client;
 };
 
-const s3 =
-  global.s3 ||
-  new S3Client({
-    region: process.env.S3_REGION,
-    credentials: {
-      accessKeyId: process.env.S3_ACCESS_KEY_ID ?? '',
-      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY ?? '',
-    },
-  });
+const config = {
+  endpoint: process.env.S3_ENDPOINT ?? '',
+  region: process.env.S3_REGION,
+  credentials: {
+    accessKeyId: process.env.S3_ACCESS_KEY_ID ?? '',
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY ?? '',
+  },
+};
+
+console.log('config: ', config);
+
+const s3 = global.s3 || new S3Client(config);
 
 if (process.env.NODE_ENV === 'development') global.s3 = s3;
 

@@ -1,0 +1,11 @@
+{
+  "CORSRules": [
+    {
+      "AllowedOrigins": ["http://lagon.localhost:4566", "http://127.0.0.1:3000", "http://localhost:3000"],
+      "AllowedMethods": ["GET", "HEAD", "PUT", "POST", "DELETE"],
+      "MaxAgeSeconds": 3000,
+      "ExposeHeaders": ["ETag"],
+      "AllowedHeaders": ["*"]
+    }
+  ]
+}
